@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h1>POSTS</h1>
+<a href="{% url 'post'%}"><h1>Post Something</h1></a>
+{% for post in posts%}
+    <div class="container-fluid">
+        <div class="card card-columns">
+            <div class="card-header">
+                {% if post.img %}
+                <img src="{{post.img.url}}" alt="" width="200px" height="300px"><br>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <p>{{post.content}}</p>
+                <p>{{post.target}}</p>
+                <p>{{post.sarcasm}}</p>
+                <p>{{post.sentiment}}</p>
+                <p>{{post.stance}}</p>
+                <p>On: {{post.date_added}}</p>
+                <p>By: {{post.author}}</p>           
+            </div>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}

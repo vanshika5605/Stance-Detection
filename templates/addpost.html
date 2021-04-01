@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div>
+        <br>
+        <form action="post" method="post">
+            {% csrf_token %}
+            <h3>Post</h3>
+            <hr>
+            <label for="content" class="form-label">Content</label>
+            <input type="text" name="content" class="form-control" placeholder="What's on your mind?"><br>
+            <label for="target" class="form-label">Category</label>
+            <input type="text" name="target" class="form-control"><br>
+            <input id="date" type="text" name="date" class="form-control" hidden>
+            <label for="img" class="form-label">Select image:</label>
+            <input type="file" name="img" accept="image/*" class="form-control"><br>
+            <label for="author" class="form-label">Author</label>
+            <input type="text" name="author" class="form-control"><br>
+            <input type="submit" class="btn btn-secondary"><br>
+        </form>
+        <br>
+    </div>
+</div>
+<script type="text/javascript">
+    document.getElementById('date').value = Date();
+  </script>
+{% endblock %}

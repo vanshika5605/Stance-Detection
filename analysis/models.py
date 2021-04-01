@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 
 class Post(models.Model):
-    content = models.CharField(max_length=250)
-    img = models.ImageField(upload_to='postpics')
-    target = models.CharField(max_length=100)
-    sarcasm = models.IntegerField()
-    sentiment = models.CharField(max_length=20)
-    stance = models.CharField(max_length=20)
-    date_added = models.DateField()
-    author = models.CharField(max_length=100)
+    content = models.CharField(max_length=250,blank=True, null=True)
+    img = models.ImageField(upload_to='postpics',blank=True, null=True)
+    target = models.CharField(max_length=100,blank=True, null=True)
+    sarcasm = models.IntegerField(blank=True, null=True)
+    sentiment = models.CharField(max_length=20,blank=True, null=True)
+    stance = models.CharField(max_length=20,blank=True, null=True)
+    date_added = models.CharField(max_length=100, blank=True, null=True)
+    author = models.CharField(max_length=100,blank=True, null=True)
