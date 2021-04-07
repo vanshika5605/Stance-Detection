@@ -5,7 +5,7 @@ import pandas as pd
 
 def display(request):
     posts = Post.objects.all()
-    sentiment_model=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\SentimentAnalysis\sentiment.pkl')
+    sentiment_model=pd.reagitd_pickle(r'C:\Users\HP\MinorProject\minor\models\SentimentAnalysis\sentiment.pkl')
     sarcasm_model=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\SarcasmDetection\model.pkl')
     vectorizer=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\SarcasmDetection\tfidf.pkl')
     stance_model=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\StanceDetection\stance.pkl')
