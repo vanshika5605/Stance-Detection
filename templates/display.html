@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-<a href="{% url 'post'%}"><h1>Post Something</h1></a>
+{% block content %} 
+<br>
+<div class='container-fluid'>
+    <div class="card card-columns">
+        <a href="{% url 'post'%}"><h4>Post Something</h4></a>
+    </div>
+</div>
+<br>
 {% for post in posts%}
     <div class="container-fluid">
         <div class="card card-columns">
