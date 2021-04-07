@@ -5,9 +5,11 @@ import pandas as pd
 
 def display(request):
     posts = Post.objects.all()
+    sentiment_model=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\SentimentAnalysis\sentiment.pkl')
     sarcasm_model=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\SarcasmDetection\model.pkl')
-    stance_model=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\StanceDetection\stance.pkl')
     vectorizer=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\SarcasmDetection\tfidf.pkl')
+    stance_model=pd.read_pickle(r'C:\Users\HP\MinorProject\minor\models\StanceDetection\stance.pkl')
+   
     for post in posts:
         s=[]
         s.append(post.content)
@@ -18,7 +20,12 @@ def display(request):
         else:
             post.sarcasm="No"
         result2=stance_model.predict(s)
+        result3=sentiment_model.predict(s)
         post.stance=result2[0]
+        if result3:
+            post.sentiment="Positive"
+        else:
+            post.sentiment="Negative"
         post.save()
 
     return render(request, "display.html", {'posts': posts})
