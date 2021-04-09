@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for t,value in targets.items %}
+    <div class="container-fluid col-lg-12 pt-4 pb-5" style="font-family: 'Montserrat';padding:7% 15%;">
+        <div class="card card-columns" style="background-color: #eaf0fa;">
+            <div class="card-header">
+                <p>{{t}}</p>
+            </div>
+            <div class="card-body">
+                <p>In Favor : {{value.0}} %</p>
+                <p>Neither : {{value.1}} %</p>
+                <p>Against : {{value.2}} %</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

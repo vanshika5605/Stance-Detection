@@ -2,28 +2,25 @@
 {% load static %}
 {% block content %} 
 <br>
-<div class='container-fluid'>
-    <div class="card card-columns">
-        <a href="{% url 'post'%}"><h4>Post Something</h4></a>
+<div class='container-fluid col-lg-12 pb-0 pt-0' style="font-family: 'Montserrat';padding:7% 15%;">
+    <div class="card card-columns" style="border:none;">
+        <a id="post" style="text-decoration:none;background-color: #99b3e6;color: white;width:fit-content;padding: 14px 25px;" href="{% url 'post'%}"><h4>Post Something</h4></a>
     </div>
 </div>
 <br>
 {% for post in posts%}
-    <div class="container-fluid">
-        <div class="card card-columns">
+    <div class="container-fluid col-lg-12 pt-0 pb-5" style="font-family: 'Montserrat';padding:7% 15%;">
+        <div class="card card-columns" style="background-color: #eaf0fa;">
             <div class="card-header">
-                {% if post.img %}
-                <img src="{{post.img.url}}" alt="" width="200px" height="300px"><br>
-                {% endif %}
+                <p>{{post.content}}</p>
             </div>
             <div class="card-body">
-                <p>{{post.content}}</p>
-                <p>{{post.target}}</p>
-                <p>Sarcasm-{{post.sarcasm}}</p>
-                <p>Sentiment-{{post.sentiment}}</p>
-                <p>Stance-{{post.stance}}</p>
-                <p>On: {{post.date_added}}</p>
-                <p>By: {{post.author}}</p>           
+                <p>Target : {{post.target}}</p>
+                <p>Is it sarcastic? : {{post.sarcasm}}</p>
+                <p>Sentiment : {{post.sentiment}}</p>
+                <p>Stance : {{post.stance}}</p>
+                <p>Posted On: {{post.date_added}}</p>
+                <p>Posted By: {{post.author}}</p>           
             </div>
         </div>
     </div>

@@ -43,3 +43,28 @@ def post(request):
         return redirect('/analysis')
     else:
         return render(request, "addpost.html")
+
+def report(request):
+    posts = Post.objects.all()
+    #favor,none,against
+    targets = {'Atheism': [0, 0, 0], 'Climate Change is a real concern': [0, 0, 0],'Feminist Movement': [0, 0, 0],'Hillary Clinton': [0, 0, 0],'Legalization of Abortion': [0, 0, 0]}
+    for post in posts:
+        for t in targets.keys():
+            if post.target==t:
+                if post.stance=='FAVOR':
+                    targets[t][0]=targets[t][0]+1
+                elif post.stance=='NONE':
+                    targets[t][1]=targets[t][1]+1
+                else:
+                    targets[t][2]=targets[t][2]+1
+    #ans={'Atheism': 0, 'Climate Change is a real concern': 0,'Feminist Movement': 0,'Hillary Clinton': 0,'Legalization of Abortion': 0}
+    for t in targets.keys():
+        temp=targets[t][0]+targets[t][1]+targets[t][2]
+        if temp==0:
+            pass
+        else:
+            targets[t][0]=(targets[t][0]/temp)*100
+            targets[t][1]=(targets[t][1]/temp)*100
+            targets[t][2]=(targets[t][2]/temp)*100
+    temp=['In Favor', 'Neither', 'Against']
+    return render(request, "report.html",{'targets':targets,'temp':temp})
