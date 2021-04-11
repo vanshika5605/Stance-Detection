@@ -35,10 +35,9 @@ def post(request):
         content=request.POST['content']
         target=request.POST['target']
         date=request.POST['date']
-        img=request.POST['img']
         author=request.POST['author']
 
-        post=Post(content=content, target=target, img=img, date_added=date, author=author)
+        post=Post(content=content, target=target, date_added=date, author=author)
         post.save()
         return redirect('/analysis')
     else:
