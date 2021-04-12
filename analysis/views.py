@@ -62,8 +62,8 @@ def report(request):
         if temp==0:
             pass
         else:
-            targets[t][0]=(targets[t][0]/temp)*100
-            targets[t][1]=(targets[t][1]/temp)*100
-            targets[t][2]=(targets[t][2]/temp)*100
+            targets[t][0]=int((targets[t][0]/temp)*100)
+            targets[t][1]=int((targets[t][1]/temp)*100)
+            targets[t][2]=int((targets[t][2]/temp)*100)
     temp=['In Favor', 'Neither', 'Against']
     return render(request, "report.html",{'targets':targets,'temp':temp})
